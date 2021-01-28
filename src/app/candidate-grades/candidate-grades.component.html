@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<meta charset="utf-8">
+	<meta name="viewreport" content="width=device-width, initial-scale=1.0">
+	<title>
+		HOME
+	</title>
+	<meta charset="UTF-8">
+	
+	
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+
+
+	<link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link rel="stylesheet" type="text/css" href="candidate-grades.component.css" />
+  	<link rel="stylesheet" type="text/html" href="/resources/demos/style.css"/>
+
+  
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+  <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css">
+</head>
+
+<body>
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+	<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+	<app-header></app-header>
+	<div class="col-md-12">						
+			<app-navbar></app-navbar>	
+	</div>
+	<div class="borderline"></div>
+
+        <div class="title">
+			<h4>ASSESSOR AVAILABILITY</h4>
+			<div class="bdcrumb">
+			<nav aria-label="breadcrumb">
+				<ol style="background: transparent;" class="breadcrumb">
+                  <li class="breadcrumb-item"><a [routerLink]="['/AssessorDetails']">Dashboard</a></li>
+                  <li class="breadcrumb-item"><a [routerLink]="['/AssessorAssessmentData']">Assessor Data   </a></li>
+				  <li class="breadcrumb-item active">Assessor Grade Details</li>
+				</ol>
+			  </nav>
+			</div>
+		</div>
+      <div class="container-fluid banner">
+		<div class="spinner-border text-primary" id="image" style="display: none"></div>
+
+        <table class="table-sortable table-striped" id="myTable" border="1">
+        <thead>
+            <tr>
+            <th >S.No.</th>
+              <th >Category</th>
+              <th >Nos Name</th>
+              <th >Nos Code</th>
+              <th >Total Allocated Marks</th>
+              <th >Candidate Obtained Marks</th>
+		  </thead>
+		  <tbody id="tblBody">
+			<tr>
+				<td colspan="6">Loading data...</td>
+			</tr>
+		  </tbody>
+		</table>
+	  </div>
+		
+	  <div class="modal" id="popupEventPreview" role="dialog" tabindex="-1" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered modal-lg ">
+		  <div class="modal-content" style="width: auto;font-size:14px;">
+	  
+			<!-- Modal Header -->
+			<div class="modal-header" style="height: 8vh;">
+			  <h3 id="hdrImageTitle" class="modal-title" style="color: black;">PC Information</h3>
+			</div>
+	  
+			<!-- Modal body -->
+			<div style="color: black; height:80vh; overflow-y:scroll" class="modal-body">
+
+				<div class="row-fluid control-group">
+					<table id="tblEvents" class="display table table-bordered">
+							<thead class="overrideBackgroundColor">  
+								<tr>
+									<th>S.No.</th>
+									<th>Nos Code</th>
+									<th>Nos Name</th>
+									<th>Performance Criteria</th>
+									<th>Marks Obtained</th>
+									<th>Marks Allocated</th>
+								</tr>
+							</thead>
+							<tbody id="tblEventBody">
+							</tbody>
+						</table> 
+				</div>
+
+			</div>
+	  
+			<!-- Modal footer -->
+			<div class="modal-footer" style="height: 8vh;">	
+				<a class="btn btn-success"  (click)="hideModel()" data-dismiss="modal" style="float:right">Close</a>
+			</div>
+	  
+		  </div>
+		</div>
+	  </div>
+	  <div class="footer">
+		<app-footer></app-footer>
+		</div>
+</body>
+
+</html>

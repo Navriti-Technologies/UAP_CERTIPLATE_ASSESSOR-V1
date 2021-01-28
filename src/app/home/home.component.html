@@ -1,0 +1,147 @@
+<!--<!DOCTYPE html>
+<html>
+<head>
+	
+	<meta charset="utf-8">
+	<meta name="viewreport" content="width=device-width, initial-scale=1.0">
+	<title>
+		HOME
+	</title>
+	<meta charset="UTF-8">
+
+	
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  	<link rel="stylesheet" type="text/html" href="/resources/demos/style.css">
+
+	
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+	<link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link rel="stylesheet" type="text/css" href="home.component.css" />
+</head>
+<body>
+	<app-header></app-header>
+	<div class="loader" id='image' style='display: none;'></div>
+		
+	<div class="container-fluid banner">
+		<div class="row">
+			<div class="col-md-12">
+				<nav class="navbar navbar-md mt-0">
+					<ul class="nav navbar-left mt-0 pt-0 ml-0"></ul>
+					<app-navbar></app-navbar>
+				</nav>
+			</div>		
+
+			<div class="table_view ml-3 mr-3" style="width :100%;">
+			<table class="table-sortable" id="dt">
+				<thead>
+				  <tr>
+					<th rowspan="2">Sector Id</th>
+					<th rowspan="2">Sector</th>
+					<th colspan="6">Government</th>
+					<th colspan="5">Institution</th>
+					<th colspan="2">Organization</th>
+				  </tr>
+				  <tr>
+					<th>Leads</th>
+					<th>Approved (Not Certified)</th>
+					<th>Certified</th>
+					<th>Certificate Expired</th>
+					<th>Total</th>
+					<th>Distinct Total Count</th>
+					<th>Leads</th>
+					<th>Approved (Not Certified)</th>
+					<th>Certified</th>
+					<th>Total</th>
+					<th>Distinct Total Count</th>
+					<th>Total</th>
+					<th>Unique Total</th>
+				</tr>
+				</thead>
+				<tbody>
+					<tr *ngFor='let data of userData; let i =index'>
+					<td>{{i+1}}</td>
+					<td id="sectors"><a [routerLink]="['/qp_wise_details']" [queryParams]="{sec_id : data.SectorId}">{{data.SectorName}}</a></td>
+					<td><a [routerLink]="['/assessor_certification_details']" [queryParams]="{sec_id : data.SectorId, qp_id : '0', searchType : 'GLC'}">{{data.GovernmentLeadCount}}</a></td>
+					<td><a [routerLink]="['/assessor_certification_details']" [queryParams]="{sec_id : data.SectorId, qp_id : '0', searchType : 'GAC'}">{{data.GovernmentApprovedCount}}</a></td>
+					<td><a [routerLink]="['/assessor_certification_details']" [queryParams]="{sec_id : data.SectorId, qp_id : '0', searchType : 'GCC'}">{{data.GovernmentCertifiedCount}}</a></td>
+					<td><a [routerLink]="['/assessor_certification_details']" [queryParams]="{sec_id : data.SectorId, qp_id : '0', searchType : 'GEC'}">{{data.GovernmentExpiredCount}}</a></td>
+					<td><a [routerLink]="['/assessor_certification_details']" [queryParams]="{sec_id : data.SectorId, qp_id : '0', searchType : 'GTC'}">{{data.GovernmentTotalCount}}</a></td>
+					<td><a [routerLink]="['/assessor_certification_details']" [queryParams]="{sec_id : data.SectorId, qp_id : '0', searchType : 'GDTC'}">{{data.GovernmentDistinctTotalCount}}</a></td>
+					<td><a [routerLink]="['/assessor_certification_details']" [queryParams]="{sec_id : data.SectorId, qp_id : '0', searchType : 'ILC'}">{{data.InstitutionLeadCount}}</a></td>
+					<td><a [routerLink]="['/assessor_certification_details']" [queryParams]="{sec_id : data.SectorId, qp_id : '0', searchType : 'IAC'}">{{data.InstitutionApprovedCount}}</a></td>
+					<td><a [routerLink]="['/assessor_certification_details']" [queryParams]="{sec_id : data.SectorId, qp_id : '0', searchType : 'ICC'}">{{data.InstitutionCertifiedCount}}</a></td>
+					<td><a [routerLink]="['/assessor_certification_details']" [queryParams]="{sec_id : data.SectorId, qp_id : '0', searchType : 'ITC'}">{{data.InstitutionTotalCount}}</a></td>
+					<td><a [routerLink]="['/assessor_certification_details']" [queryParams]="{sec_id : data.SectorId, qp_id : '0', searchType : 'IDTC'}">{{data.InstitutionDistinctTotalCount}}</a></td>
+					<td><a [routerLink]="['/assessor_certification_details']" [queryParams]="{sec_id : data.SectorId, qp_id : '0', searchType : 'TC'}">{{data.TotalCount}}</a></td>
+					<td><a [routerLink]="['/assessor_certification_details']" [queryParams]="{sec_id : data.SectorId, qp_id : '0', searchType : 'DTC'}">{{data.DistinctTotalCount}}</a></td>
+					</tr>
+				</tbody>
+			  </table>
+			  </div>
+		</div>
+		<app-footer></app-footer>
+	</div>
+
+</body>
+
+</html>-->
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <section>
+	  <app-header></app-header>
+	  <div class="col-md-12">			
+			<app-navbar></app-navbar>
+	</div>
+
+	  <div class="spinner-border text-primary" id="image" style="display: none"></div>
+		<div class="title">
+			<h4>ASSESSOR AVAILABILITY</h4>
+			<ol style="display:inline-block; margin-left:68%">
+			  <li class="breadcrumb-item active">Dashboard</li>
+			</ol>
+		  
+		</div>
+      <div class="container">
+        <table class="mdl-data-table stripe hover cell-border order-column display" id="myTable">
+        <thead>
+            <tr>
+              <th rowspan="2">S.No.</th>
+              <th rowspan="2">Sector</th>
+              <th colspan="6">Government</th>
+              <th colspan="5">Institution</th>
+              <th colspan="2">Organization</th>
+            </tr>
+            <tr>
+              <th>Leads</th>
+              <th>Approved (Not Certified)</th>
+              <th>Certified</th>
+              <th>Certificate Expired</th>
+              <th>Total</th>
+              <th>Distinct Total Count</th>
+              <th>Leads</th>
+              <th>Approved (Not Certified)</th>
+              <th>Certified</th>
+              <th>Total</th>
+              <th>Distinct Total Count</th>
+              <th>Total</th>
+              <th>Unique Total</th>
+          </tr>
+		  </thead>
+		</table>
+	  </div>
+	</section>
+	<div class="footer">
+		<app-footers></app-footers>
+	</div>
+  </body>
+</html>

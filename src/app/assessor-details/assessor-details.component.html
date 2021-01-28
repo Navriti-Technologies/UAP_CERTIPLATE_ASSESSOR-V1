@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewreport" content="width=device-width, initial-scale=1.0">
+	<title>
+		HOME
+	</title>
+    <link rel="stylesheet" type="text/css" href="assessor-details.component.css" />
+</head>
+<body>
+
+	<div class="loader" id='image' style='display: none;'></div>
+	<app-header></app-header>
+	<div class="col-md-12">					
+			<app-navbar></app-navbar>
+	</div>
+
+<div class="first">
+	<div class="title">
+		<h4>ASSESSOR AVAILABILITY</h4>
+	<div style="display:inline-block;margin-left:48%;" *ngIf="previousPage=='jobrole'; else elseBlock">
+	<nav aria-label="breadcrumb">
+        <ol style="background: transparent;" class="breadcrumb">
+		  <li class="breadcrumb-item"><a style="color: rgb(32, 32, 238);" [routerLink]="['/home']">Dashboard</a></li>
+		  <li class="breadcrumb-item "><a style="color: rgb(32, 32, 238);" [routerLink]="['/QualificationPackCandidateDetails']">QPwise Distribution</a></li>
+		  <li class="breadcrumb-item active">Assessor Details</li>
+        </ol>
+      </nav>
+	</div>
+
+	<ng-template #elseBlock>
+		<nav aria-label="breadcrumb" style="display:inline-block; margin-left:58%">
+			<ol style="background: transparent;" class="breadcrumb">
+			  <li class="breadcrumb-item"><a style="color: rgb(32, 32, 238);" [routerLink]="['/home']">Dashboard</a></li>
+			  <li class="breadcrumb-item active">Assessor Details</li>
+			</ol>
+		  </nav>
+		</ng-template>
+	</div>
+	<div class="container-fluid banner">
+		<div class="row">
+			<div class="toggle2">
+				<canvas id="myChart" width="750" height="400"></canvas>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="second" style="display:none;" >
+  <div class="title">
+		<h4>ASSESSOR AVAILABILITY</h4>
+	<div style="display:inline-block;margin-left:35%;" *ngIf="previousPage=='jobrole'; else elseBlock1">
+	  <nav aria-label="breadcrumb">
+        <ol style="background: transparent;" class="breadcrumb">
+		  <li class="breadcrumb-item"><a style="color: rgb(32, 32, 238);" [routerLink]="['/home']">Dashboard</a></li>
+		  <li class="breadcrumb-item "><a style="color: rgb(32, 32, 238);" [routerLink]="['/QualificationPackCandidateDetails']">QPwise Distribution</a></li>
+		  <li class="breadcrumb-item "><a style="color: rgb(32, 32, 238);" [routerLink]="" (click)="scrolldown()">Statewise Distribution</a></li>
+		  <li class="breadcrumb-item active">Assessor Details</li>
+        </ol>
+      </nav>
+    </div>
+</div>
+
+	<ng-template #elseBlock1>
+		<nav aria-label="breadcrumb" style="display:inline-block; margin-left:40%">
+			<ol style="background: transparent;" class="breadcrumb">
+			  <li class="breadcrumb-item"><a style="color: rgb(32, 32, 238);" [routerLink]="['/home']">Dashboard</a></li>
+			  <li class="breadcrumb-item "><a style="color: rgb(32, 32, 238);" [routerLink]="" (click)="scrolldown()">Statewise Distribution</a></li>
+			  <li class="breadcrumb-item active">Assessor Certification Details</li>
+			</ol>
+		  </nav>
+	</ng-template>
+
+		<div class="toggle1 mt-3">
+			<!--<div class="form" style="margin-left : 47%">
+			<form class="mt-2 ml-5 mb-0">
+			</form>
+			</div>-->
+			<a class="btn btn-success" style="background-color: black; border-color:black; margin-bottom:1%; float:right" (click)="download_file()" value="Download Excel"><mat-icon>get_app</mat-icon></a>
+			<table class="mdl-data-table stripe hover cell-border order-column display" id="myTable">
+			<thead>
+			  <tr>
+				  <th>S.No.</th>
+				<th >Assessor Id</th>
+				<th >Assessor Name</th>
+				<th >Assessor Email</th>
+				<th >Assessor Phone</th>
+				<th >Assessor Alternate Phone</th>
+				<th >Allocation Type</th>
+				<th >Date of Upload</th>
+				<th >District</th>
+				<th >State</th>
+				<th >Adhaar No</th>
+				<th >Pan No</th>
+				<th >Assessor Status</th>
+				<th >Sector</th>
+				<th >Qualification Pack	(QP)</th>
+				<th >SSC Certification (Issued By)</th>
+				<th >SSC Certificate File Name</th>
+				<th >SSC Certification (Date of Issue)</th>
+				<th >SSC Certification (Date of Expiry)</th>
+				<th >Languages Known</th>
+				<th >Assessor Source</th>
+				<th >Username (Sourced By)</th>
+				<th >Bank Name</th>
+				<th >Bank Acc.No</th>
+				<th >IFSC</th>
+				<th >Check FileName</th>
+				<th >Mou FileName</th>
+				<th >Assessor Image FileName</th>
+				<th >Resume FileName</th>
+				<th >Education Cerificate FileName</th>
+				<th >Experience Certificate FileName</th>
+				
+			  </tr>
+			</thead>
+			<!--<tbody>
+				<tr *ngFor="let i = index; let data of assessorData | filter:term | paginate: { itemsPerPage: 5, currentPage: page, totalItems: totalRecords }">
+					
+					<td>{{data.AssessorId}}</td>
+					<td>{{data.AssessorName}}</td>
+					<td>{{data.AssessorEmail}}</td>
+					<td>{{data.AssessorPhone}}</td>
+					<td>{{data.AssessorAlternatePhone}}</td>
+					<td>{{data.AllocationType}}</td>
+					<td>{{data.DateOfUpload}}</td>
+					<td>{{data.District}}</td>
+					<td>{{data.State}}</td>
+					<td>{{data.AadhaarNumber}}</td>
+					<td>{{data.PanCardNumber}}</td>
+					<td>{{data.AssessorStatus}}</td>
+					<td>{{data.Sector}}</td>
+					<td>{{data.QualificationPacks}}</td>
+					<td>{{data.SscCertificationIssuedBy}}</td>
+					<td>{{data.SscCertificateFileName}}</td>
+					<td>{{data.SscCertificationIssuedDate}}</td>
+					<td>{{data.SscCertificationExpiryDate}}</td>
+					<td>{{data.LanguagesKnown}}</td>
+					<td>{{data.AssessorSource}}</td>
+
+					<td>{{data.SourcedByUserName}}</td>
+					<td>{{data.BankName}}</td>
+					<td>{{data.BankAccountNumber}}</td>
+					<td>{{data.IFSC}}</td>
+					<td>{{data.ChequeFileName}}</td>
+
+					<td>{{data.MouFileName}}</td>
+					<td>{{data.AssessorImageFileName}}</td>
+					<td>{{data.ResumeFileName}}</td>
+					<td>{{data.EducationCertificateFileName}}</td>
+					<td>{{data.ExperienceCertificateFileName}}</td>
+
+
+				</tr>
+			</tbody>-->
+		  </table>
+		  <!--<pagination-controls style="color: white; font-size: 14px;" maxSize="3"
+				  directionLinks="true"
+				  
+				(pageChange)="page= $event">
+			</pagination-controls>-->
+		</div>
+</div>
+</body>
+</html>

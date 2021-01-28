@@ -1,0 +1,187 @@
+<!--<!DOCTYPE html>
+<html>
+<head>
+	
+	<meta charset="utf-8">
+	<meta name="viewreport" content="width=device-width, initial-scale=1.0">
+	<title>
+		HOME
+	</title>
+	<meta charset="UTF-8">
+	
+	
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+
+
+	<link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet" />
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link rel="stylesheet" type="text/css" href="job-role.component.css" />
+	
+
+</head>
+<body>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+		
+	
+	
+
+	<div class="loader" id='image' style='display: none;'></div>
+	<app-header></app-header>
+	
+		
+	<div class="container-fluid banner">
+		<div class="row">
+			<div class="col-md-12">
+				<nav class="navbar navbar-md mt-0">
+					<ul class="nav navbar-left mt-0 pt-0 ml-0"></ul>
+					<app-navbar></app-navbar>
+
+				</nav>
+			</div>		
+			<div class="table_view" style="width :100%; margin-top: 25px;">
+			<table class="table-sortable" id="dt">
+				<thead>
+				  <tr>
+					<th rowspan="2">SNo.</th>
+					<th rowspan="2">SECTOR</th>
+					<th colspan="3">QUALIFICATION PACK (QP)</th>
+					<th colspan="6">GOVERNMENT</th>
+					<th colspan="5">INSTITUTION</th>
+					<th colspan="2">ORGANIZATION</th>
+				  </tr>
+				  <tr>
+					<th>QP Id</th>
+					<th>QP Code</th>
+					<th>QP Name</th>
+					<th>Leads</th>
+					<th>Approved (Not Certified)</th>
+					<th>Certified</th>
+					<th>Certificate Expired</th>
+					<th>Total</th>
+					<th>Distinct Total Count</th>
+					<th>Leads</th>
+					<th>Approved (Not Certified)</th>
+					<th>Certified</th>
+					<th>Total</th>
+					<th>Distinct Total Count</th>
+					<th>Total</th>
+					<th>Unique Total</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr *ngFor='let data of userData; let i= index'>
+
+					<td>{{i+1}}</td>
+					<td>{{data.SectorName}}</td>
+
+
+					<td>{{data.QualificationPackId}}</td>
+					<td>{{data.QualificationPackCode}}</td>
+					<td>{{data.QualificationPackName}}</td>
+
+
+					<td><a [routerLink]="['/assessor_certification_details']" [queryParams]="{sec_id : data.SectorId, qp_id : data.QualificationPackId, searchType : 'GLC'}">{{data.GovernmentLeadCount}}</a></td>
+					<td><a [routerLink]="['/assessor_certification_details']" [queryParams]="{sec_id : data.SectorId, qp_id : data.QualificationPackId, searchType : 'GAC'}">{{data.GovernmentApprovedCount}}</a></td>
+					<td><a [routerLink]="['/assessor_certification_details']" [queryParams]="{sec_id : data.SectorId, qp_id : data.QualificationPackId, searchType : 'GCC'}">{{data.GovernmentCertifiedCount}}</a></td>
+					<td><a [routerLink]="['/assessor_certification_details']" [queryParams]="{sec_id : data.SectorId, qp_id : data.QualificationPackId, searchType : 'GEC'}">{{data.GovernmentExpiredCount}}</a></td>
+					<td><a [routerLink]="['/assessor_certification_details']" [queryParams]="{sec_id : data.SectorId, qp_id : data.QualificationPackId, searchType : 'GTC'}">{{data.GovernmentTotalCount}}</a></td>
+					<td><a [routerLink]="['/assessor_certification_details']" [queryParams]="{sec_id : data.SectorId, qp_id : data.QualificationPackId, searchType : 'GDTC'}">{{data.GovernmentDistinctTotalCount}}</a></td>
+
+
+					<td><a [routerLink]="['/assessor_certification_details']" [queryParams]="{sec_id : data.SectorId, qp_id : data.QualificationPackId, searchType : 'ILC'}">{{data.InstitutionLeadCount}}</a></td>
+					<td><a [routerLink]="['/assessor_certification_details']" [queryParams]="{sec_id : data.SectorId, qp_id : data.QualificationPackId, searchType : 'IAC'}">{{data.InstitutionApprovedCount}}</a></td>
+					<td><a [routerLink]="['/assessor_certification_details']" [queryParams]="{sec_id : data.SectorId, qp_id : data.QualificationPackId, searchType : 'ICC'}">{{data.InstitutionCertifiedCount}}</a></td>
+					<td><a [routerLink]="['/assessor_certification_details']" [queryParams]="{sec_id : data.SectorId, qp_id : data.QualificationPackId, searchType : 'ITC'}">{{data.InstitutionTotalCount}}</a></td>
+					<td><a [routerLink]="['/assessor_certification_details']" [queryParams]="{sec_id : data.SectorId, qp_id : data.QualificationPackId, searchType : 'IDTC'}">{{data.InstitutionDistinctTotalCount}}</a></td>
+
+
+					<td><a [routerLink]="['/assessor_certification_details']" [queryParams]="{sec_id : data.SectorId, qp_id : data.QualificationPackId, searchType : 'TC'}">{{data.TotalCount}}</a></td>
+					<td><a [routerLink]="['/assessor_certification_details']" [queryParams]="{sec_id : data.SectorId, qp_id : data.QualificationPackId, searchType : 'DTC'}">{{data.DistinctTotalCount}}</a></td>
+				</tr>
+				</tbody>
+			  </table>
+			  </div>
+		</div>
+	</div>
+	<app-footer></app-footer>
+</body>
+</html>-->
+
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <section>
+	  <app-header></app-header>
+	  <div class="col-md-12">
+						
+			<app-navbar></app-navbar>
+		
+	</div>
+      
+      <div class="borderline"></div>
+
+      <div
+        class="spinner-border text-primary"
+        id="image"
+        style="display: none"
+	  ></div>
+	  
+<div class="title">
+	<h4>ASSESSOR AVAILABILITY</h4>
+	  <nav style="display:inline-block; margin-left:56%">
+        <ol style="background: transparent;" class="breadcrumb">
+		  <li class="breadcrumb-item"><a style="color: rgb(32, 32, 238);" [routerLink]="['/home']">Dashboard</a></li>
+		  <li class="breadcrumb-item active">QPwise Distribution</li>
+        </ol>
+      </nav>
+</div>
+      <div class="container mt-3">
+        <table class="mdl-data-table stripe hover cell-border order-column display" id="myTable">
+		
+		<thead>
+			<tr>
+			  <th rowspan="2">S.No.</th>
+			  <th rowspan="2">Sector</th>
+			  <th colspan="3">Qualification Pack (QP)</th>
+			  <th colspan="6">Government</th>
+			  <th colspan="5">Institution</th>
+			  <th colspan="2">Organization</th>
+			</tr>
+			<tr>
+			  <th>QP Code</th>
+			  <th>QP Name</th>
+			  <th>Leads</th>
+			  <th>Approved (Not Certified)</th>
+			  <th>Certified</th>
+			  <th>Certificate Expired</th>
+			  <th>Total</th>
+			  <th>Distinct Total Count</th>
+			  <th>Leads</th>
+			  <th>Approved (Not Certified)</th>
+			  <th>Certified</th>
+			  <th>Total</th>
+			  <th>Distinct Total Count</th>
+			  <th>Total</th>
+			  <th>Unique Total</th>
+		  </tr>
+		  </thead>
+
+        </table>
+      </div>
+	</section>
+	<div class="footer">
+		<app-footers></app-footers>
+	</div>
+  </body>
+</html>
