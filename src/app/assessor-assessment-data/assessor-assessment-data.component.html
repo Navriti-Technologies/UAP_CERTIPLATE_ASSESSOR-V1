@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<meta charset="utf-8">
+	<meta name="viewreport" content="width=device-width, initial-scale=1.0">
+	<title>
+		HOME
+	</title>
+	<meta charset="UTF-8">
+	
+	
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+
+
+	<link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link rel="stylesheet" type="text/css" href="assessor-assessment-data.component.css" />
+  	<link rel="stylesheet" type="text/html" href="/resources/demos/style.css"/>
+
+  
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+  <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css">
+</head>
+
+<body>
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+	<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+	<app-header></app-header>
+	<div class="col-md-12">						
+			<app-navbar></app-navbar>	
+	</div>
+	<div class="borderline"></div>
+
+        <div class="title">
+			<h4>ASSESSOR AVAILABILITY</h4>
+			<div class="bdcrumb">
+			<nav aria-label="breadcrumb">
+				<ol style="background: transparent;" class="breadcrumb">
+				  <li class="breadcrumb-item"><a [routerLink]="['/AssessorDetails']">Dashboard</a></li>
+				  <li class="breadcrumb-item active">Assessor Assessment Details</li>
+				</ol>
+			  </nav>
+			</div>
+		</div>
+      <div class="container-fluid banner">
+		<div class="spinner-border text-primary" id="image" style="display: none"></div>
+		<input type="text" class="txt mb-3" (keyup)="myFunction()" id="search" placeholder="Type to search">
+        <table class="table-sortable table-striped" id="myTable">
+        <thead>
+            <tr>
+              <th rowspan="2">S.No.</th>
+              <th rowspan="2">Sector</th>
+              <th rowspan="2">QP Code</th>
+              <th rowspan="2">QP Name</th>
+              <th rowspan="2">Name</th>
+              <th id="batchCode" rowspan="2">Batch</th>
+              <th rowspan="2">Request ID</th>
+			  <th rowspan="2">Grades</th>
+			  <th colspan="3">Evidence</th>
+			</tr>
+			<tr>
+				<th id="theory" >Theory</th>
+				<th id="practical" >Practical</th>
+				<th id="viva" >Viva/MCQs</th>
+			</tr>
+		  </thead>
+		  <tbody>
+			  <tr *ngFor="let d of userData; let i = index">
+				  <td>{{i+1}}</td>
+				  <td>{{d.SectorName}}</td>
+				  <td>{{d.QualificationPackCode}}</td>
+				  <td>{{d.QualificationPackName}}</td>
+				  <td>{{d.CandidateName}}</td>
+				  <td>{{d.BatchCode}}</td>
+				  <td>{{d.RequestId}}</td>
+				  <td>
+					<a class="btn" (click)='getRowData()' [routerLink]="['/AssessmentGradebook']" title="Candidate Grades" style="background-color:rgb(19, 182, 73); border-color:rgb(19, 182, 73);"><mat-icon >grading</mat-icon></a>
+				  </td>
+
+
+				  <td *ngIf="d.TheoryAssessmentId != '0'; else elseBlock1" >
+					<a class="btn" (click)="ShowAssessmentImages(d.CandidateId,d.TheoryScheduleId,d.TheoryAssessmentId,'1',d.TheoryExamModeId)" title="View Candidate Start/End Images" style="background-color:rgb(255, 207, 120); border-color:rgb(197, 197, 197);"><mat-icon >perm_identity</mat-icon></a>
+					<a class="btn" (click)="ShowAssessmentImages(d.CandidateId,d.TheoryScheduleId,d.TheoryAssessmentId,'2',d.TheoryExamModeId)" title="View Candidate Identity Image" style="background-color:rgb(225, 153, 182); border-color:rgb(197, 197, 197);"><mat-icon>photo</mat-icon></a>
+					<a class="btn" (click)="ShowAssessmentImages(d.CandidateId,d.TheoryScheduleId,d.TheoryAssessmentId,'3',d.TheoryExamModeId)" title="View System Snapshots" style="background-color:rgb(91, 134, 138); border-color:rgb(197, 197, 197);"><mat-icon >party_mode</mat-icon></a>
+					<a class="btn" (click)="ShowAssessmentImages(d.CandidateId,d.TheoryScheduleId,d.TheoryAssessmentId,'4',d.TheoryExamModeId)" title="View Candidate Snapshots" style="background-color:rgb(135, 135, 161); border-color:rgb(197, 197, 197);"><mat-icon >photo_camera</mat-icon></a>
+				  </td>
+				  <ng-template #elseBlock1>
+					<td>--</td>
+				  </ng-template>
+
+				  <td *ngIf="d.PracticalAssessmentId != '0'; else elseBlock1" >
+					<a class="btn" (click)="ShowAssessmentImages(d.CandidateId,d.PracticalScheduleId,d.PracticalAssessmentId,'1',d.PracticalExamModeId)" title="View Candidate Start/End Images" style="background-color:rgb(255, 207, 120); border-color:rgb(197, 197, 197);"><mat-icon >perm_identity</mat-icon></a>
+					<a class="btn" (click)="ShowAssessmentImages(d.CandidateId,d.PracticalScheduleId,d.PracticalAssessmentId,'2',d.PracticalExamModeId)" title="View Candidate Identity Image" style="background-color:rgb(225, 153, 182); border-color:rgb(197, 197, 197);"><mat-icon>photo</mat-icon></a>
+					<a class="btn" (click)="ShowAssessmentImages(d.CandidateId,d.PracticalScheduleId,d.PracticalAssessmentId,'3',d.PracticalExamModeId)" title="View System Snapshots" style="background-color:rgb(91, 134, 138); border-color:rgb(197, 197, 197);"><mat-icon >party_mode</mat-icon></a>
+					<a class="btn" (click)="ShowAssessmentImages(d.CandidateId,d.PracticalScheduleId,d.PracticalAssessmentId,'4',d.PracticalExamModeId)" title="View Candidate Snapshots" style="background-color:rgb(135, 135, 161); border-color:rgb(197, 197, 197);"><mat-icon >photo_camera</mat-icon></a>
+				  </td>
+				  <ng-template #elseBlock1>
+					<td>--</td>
+				  </ng-template>
+
+				  <td *ngIf="d.VivaMcqAssessmentId != '0'; else elseBlock1" >
+					<a class="btn" (click)="ShowAssessmentImages(d.CandidateId,d.VivaMcqScheduleId,d.VivaMcqAssessmentId,'1',d.VivaMcqExamModeId)" title="View Candidate Start/End Images" style="background-color:rgb(255, 207, 120); border-color:rgb(197, 197, 197);"><mat-icon >perm_identity</mat-icon></a>
+					<a class="btn" (click)="ShowAssessmentImages(d.CandidateId,d.VivaMcqScheduleId,d.VivaMcqAssessmentId,'2',d.VivaMcqExamModeId)" title="View Candidate Identity Image" style="background-color:rgb(225, 153, 182); border-color:rgb(197, 197, 197);"><mat-icon>photo</mat-icon></a>
+					<a class="btn" (click)="ShowAssessmentImages(d.CandidateId,d.VivaMcqScheduleId,d.VivaMcqAssessmentId,'3',d.VivaMcqExamModeId)" title="View System Snapshots" style="background-color:rgb(91, 134, 138); border-color:rgb(197, 197, 197);"><mat-icon >party_mode</mat-icon></a>
+					<a class="btn" (click)="ShowAssessmentImages(d.CandidateId,d.VivaMcqScheduleId,d.VivaMcqAssessmentId,'4',d.VivaMcqExamModeId)" title="View Candidate Snapshots" style="background-color:rgb(135, 135, 161); border-color:rgb(197, 197, 197);"><mat-icon >photo_camera</mat-icon></a>
+				  </td>
+				  <ng-template #elseBlock1>
+					<td>--</td>
+				  </ng-template>
+
+				  
+				  
+			  </tr>
+		  </tbody>
+		</table>
+	  </div>
+		
+	  <div class="modal" id="myModal" role="dialog" tabindex="-1" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered modal-lg ">
+		  <div class="modal-content" style="width: 100vh;">
+	  
+			<!-- Modal Header -->
+			<div class="modal-header" style="height: 8vh;">
+			  <h3 id="hdrImageTitle" class="modal-title" style="color: black;"></h3>
+			  <label id="lblTimeStamp" style="margin-right:24px;color:maroon;font-style:italic;"></label>
+
+			</div>
+	  
+			<!-- Modal body -->
+			<div style="color: black; height: auto;" class="modal-body">
+			  <img id="imgPreview" style="height: 300px; margin-left:13%">
+			</div>
+	  
+			<!-- Modal footer -->
+			<div class="modal-footer justify-content-between" style="height: 8vh;">
+				<div id="divImagePreviewControls">
+				<a id="btnFirst" (click)="NavigateImage('FIRST')" class="btn btn-success" data-dismiss="modal" style="display: inline; margin-right:5px; background-color:#0055cc; border-color:#0055cc">First</a>
+				<a id="btnPrevious" (click)="NavigateImage('PREVIOUS')" class="btn btn-success" data-dismiss="modal" style="display: inline; margin-right:5px; background-color:#51a351; border-color:#51a351">Previous</a>
+
+				<a id="btnNext" (click)="NavigateImage('NEXT')" class="btn btn-success" data-dismiss="modal" style="display: inline; margin-right:5px; background-color:#51a351; border-color:#51a351">Next</a>
+				<a id="btnLast" (click)="NavigateImage('LAST')" class="btn btn-success" data-dismiss="modal" style="display: inline; background-color:#0055cc; border-color:#0055cc">Last</a>
+				</div>
+
+				<div id="test">
+				<a id="btnViewMap" (click)="ViewImageLocation()" class="btn btn-success" data-dismiss="modal" style="display: inline; margin-right:5px; background-color:#faa732; border-color:#faa732">View Map</a>
+				<a class="btn btn-success" (click)="hideModel()" data-dismiss="modal" style="display: inline;">Close</a>
+			</div>
+			</div>
+	  
+		  </div>
+		</div>
+	  </div>
+
+	
+	</body>
+
+</html>

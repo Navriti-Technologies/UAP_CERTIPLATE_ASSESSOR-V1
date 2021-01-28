@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<meta charset="utf-8">
+	<meta name="viewreport" content="width=device-width, initial-scale=1.0">
+	<title>
+		HOME
+	</title>
+	<meta charset="UTF-8">
+	
+
+	<link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" href="upcoming-batches.component.css" />
+  	<link rel="stylesheet" type="text/html" href="/resources/demos/style.css"/>
+
+</head>
+
+<body id="body">
+
+	<app-header></app-header>
+	<div class="col-md-12">				
+			<app-navbar></app-navbar>
+	</div>
+  <div class="borderline"></div>
+  
+  <div class="title">
+    <h4>UPCOMING BATCHES</h4>
+    <nav style="display:inline-block; margin-left:55%">
+      <ol style="background: transparent;" class="breadcrumb">
+		<li *ngIf="UserRole=='3'; else elseBlock" class="breadcrumb-item">
+			<a style="color: rgb(32, 32, 238);" [routerLink]="['/AssessorDetails']">Dashboard</a>
+		</li>
+		<ng-template #elseBlock>
+			<a style="color: rgb(32, 32, 238);" [routerLink]="['/home']">Dashboard</a>
+		</ng-template>
+        <li class="breadcrumb-item active">Upcoming Batches</li>
+      </ol>
+    </nav>
+  </div>
+			
+	<div class="container-fluid banner">
+		<div class="container mt-3">
+			<div class="spinner-border text-primary" id="image" style="display: none"></div>
+			  <table class="mdl-data-table stripe hover cell-border order-column display" id="myTable">
+			  <thead>
+				  <tr>
+					<th>S.No</th>
+					<th>Request Id</th>
+					<th>SDMS Batch ID</th>
+					<th>Batch Size</th>
+
+					<th>Stage Name</th>
+          <th>Status Name</th>
+          
+          <th>Theory Assessment Mode</th>
+					<th>Practical Assessment Mode</th>
+					<th>Viva Assessment Mode</th>
+					
+					<th>Theory Assessed Count</th>
+					<th>Practical Assessed Count</th>
+					<th>Viva Assessed Count</th>
+
+					<th>Requestor Name</th>
+					<th>Center Name</th>
+					<th>Training Partner Name</th>
+					<th>Assessor Name</th>
+					<th>Scheduled Date</th>
+					<th>Assessment Date</th>
+					
+				</tr>
+				</thead>
+			  </table>
+			</div>
+			
+	</div>
+	<app-footers></app-footers>
+	</body>
+
+</html>

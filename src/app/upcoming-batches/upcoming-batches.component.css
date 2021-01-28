@@ -1,0 +1,132 @@
+body{
+	margin:0;
+	padding:0;
+	background:#fff;
+	font-family: 'Raleway',sans-serif;
+	color: #fff;
+	overflow-x: hidden;
+	width: 100%;;
+	height: auto;
+	background-repeat: no-repeat;
+	background-image: url('/assets/images/test.jpg') ;
+}
+
+.banner, body{
+	height: 100vh;
+	width: 100%;
+	background-position: top;
+	background-size:cover;
+	/*background-attachment: fixed;*/
+	background-repeat: no-repeat;
+	width: 100%;
+	
+}
+
+ 
+.banner .navbar{
+    margin-top: 0px;
+	margin-left: 0px;
+	border-bottom: 1px solid white;
+}
+
+
+
+.top{
+	margin-top: 3px;
+	display: flex;
+  	flex-direction: row-reverse;
+  	justify-content: space-between;
+	  width: 100%;
+	  margin-bottom: 0px;
+	
+}
+
+button {
+  width: fit-content;
+  background-color: #4CAF50;
+  color: white;
+  padding: 13px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.column {
+	float: left;
+	width: 33.33%;
+	padding: 10px;	
+  }
+  
+  /* Clear floats after the columns */
+  
+.batches{
+	float: right;
+}
+
+.batches .nav li:hover{
+	background-color: black;
+	border-radius: 4px;
+}
+
+/*.active{
+	background-color: black;
+	border-radius: 4px;
+}*/
+
+
+.container {
+    padding: 4px 10px;
+    position: absolute;
+    top: 22vh;
+    left: 12%;
+    font-size: 12px;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 10px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.mdl-data-table tbody td {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+}
+
+
+.mdl-data-table th {
+    text-align: center;
+    text-decoration: none;
+    color: rgb(37, 36, 36);
+}
+
+.spinner-border {
+    position: absolute;
+    z-index: 999;
+    top: 20vh;
+    left: 48%;
+}
+
+.title {
+    margin-top: 1%;
+    
+}
+
+h4{
+    display:inline-block;
+    margin-left: 5%; 
+    font-weight:600; 
+    background-color:black; 
+    border-radius:4px; 
+    color:white;
+    padding: 5px 10px;
+    font-family: 'Poppins', sans-serif;
+}
+
+ nav ol li {
+    color: black;
+    font-weight: 600;
+	font-family: 'Poppins', sans-serif;
+	
+    
+}
